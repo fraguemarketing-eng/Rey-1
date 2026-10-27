@@ -1,0 +1,580 @@
+<!doctype html>
+<html lang="es">
+<head>
+<meta charset="utf-8">
+<title>FRAGUE STUDIO | Propuesta Comercial</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Sora:wght@300;400;500;600;700;800&family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+<style>
+  @page { size: A4; margin: 0; }
+  :root {
+    --bg: #05080f;
+    --bg2: #0a1120;
+    --panel: rgba(255,255,255,.035);
+    --line: rgba(255,255,255,.09);
+    --text: #eef2f8;
+    --muted: #93a0b5;
+    --dim: #5d6a80;
+    --orange: #ff5b1f;
+    --orange2: #ff8a3d;
+    --blue: #2f7bff;
+  }
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+  html, body { background: var(--bg); }
+  body {
+    font-family: 'Inter', sans-serif;
+    color: var(--text);
+    -webkit-print-color-adjust: exact; print-color-adjust: exact;
+    font-size: 9.5pt; line-height: 1.55;
+  }
+  .page {
+    position: relative; width: 210mm; height: 297mm; overflow: hidden;
+    background:
+      radial-gradient(90mm 70mm at 105% 102%, rgba(255,91,31,.13), transparent 70%),
+      radial-gradient(110mm 90mm at -10% 60%, rgba(47,123,255,.10), transparent 70%),
+      var(--bg);
+    page-break-after: always; break-after: page;
+  }
+  .page:last-child { page-break-after: auto; break-after: auto; }
+  h1, h2, h3, .sora { font-family: 'Sora', sans-serif; }
+  .orange { color: var(--orange); }
+  .grad { color: var(--orange); }
+  .eyebrow {
+    font-family: 'Sora', sans-serif; font-size: 7.5pt; font-weight: 600;
+    letter-spacing: .22em; text-transform: uppercase; color: var(--orange);
+    display: flex; align-items: center; gap: 3mm;
+  }
+  .eyebrow::before { content: ''; width: 8mm; height: 2px; background: var(--orange); border-radius: 2px; }
+
+  /* ---------- Section header band ---------- */
+  .band { position: relative; height: 70mm; overflow: hidden; border-bottom: 1px solid var(--line); }
+  .band img {
+    position: absolute; right: 0; top: 0; height: 100%;
+    -webkit-mask-image: linear-gradient(90deg, transparent 0%, #000 45%);
+    mask-image: linear-gradient(90deg, transparent 0%, #000 45%);
+  }
+  .band::after {
+    content: ''; position: absolute; inset: 0;
+    background: linear-gradient(180deg, transparent 60%, rgba(5,8,15,.9) 100%);
+  }
+  .band .inner { position: absolute; left: 16mm; bottom: 12mm; z-index: 2; width: 120mm; }
+  .band .num {
+    font-family: 'Sora'; font-weight: 800; font-size: 40pt; line-height: 1;
+    color: transparent; -webkit-text-stroke: 1px rgba(255,255,255,.22);
+    position: absolute; left: 16mm; top: 7mm; z-index: 2;
+  }
+  .band h2 {
+    font-size: 25pt; font-weight: 700; line-height: 1.08; letter-spacing: -.01em; margin-top: 3mm;
+  }
+  .band p { color: var(--muted); margin-top: 2mm; font-size: 9.5pt; }
+
+  .content { padding: 10mm 16mm 0; }
+  .lead { font-size: 11pt; color: #c9d2df; line-height: 1.6; }
+  .muted { color: var(--muted); }
+
+  /* ---------- Footer ---------- */
+  .foot {
+    position: absolute; left: 16mm; right: 16mm; bottom: 9mm;
+    display: flex; justify-content: space-between; align-items: center;
+    font-family: 'Sora'; font-size: 6.5pt; letter-spacing: .2em; color: var(--dim); text-transform: uppercase;
+    border-top: 1px solid var(--line); padding-top: 4mm;
+  }
+  .foot .brand { display: flex; align-items: center; gap: 2.5mm; color: var(--muted); }
+  .foot .brand img { height: 5mm; opacity: .9; }
+  .foot .pg b { color: var(--text); font-weight: 600; }
+
+  .card {
+    background: linear-gradient(180deg, rgba(255,255,255,.05), rgba(255,255,255,.02));
+    border: 1px solid var(--line); border-radius: 4mm;
+  }
+  .chip {
+    display: inline-flex; align-items: center; gap: 1.6mm;
+    border: 1px solid var(--line); border-radius: 20mm; padding: 1.3mm 3.4mm;
+    font-size: 7.6pt; color: #c9d2df; background: rgba(255,255,255,.03);
+  }
+  .chip i { width: 1.6mm; height: 1.6mm; border-radius: 50%; background: var(--orange); display: inline-block; }
+  svg.ic { width: 4.6mm; height: 4.6mm; stroke: var(--orange); fill: none; stroke-width: 1.8; stroke-linecap: round; stroke-linejoin: round; flex: none; }
+
+  /* ---------- Cover ---------- */
+  .cover .hero { position: relative; height: 125mm; }
+  .cover .hero img {
+    width: 100%; height: 100%; object-fit: cover; object-position: center;
+    -webkit-mask-image: linear-gradient(180deg, #000 70%, transparent 100%);
+    mask-image: linear-gradient(180deg, #000 70%, transparent 100%);
+  }
+  .cover .tag {
+    position: absolute; top: 9mm; right: 12mm; z-index: 2;
+    font-family: 'Sora'; font-size: 7pt; letter-spacing: .22em; text-transform: uppercase;
+    border: 1px solid rgba(255,255,255,.22); border-radius: 20mm; padding: 1.6mm 4mm; color: #fff;
+    background: rgba(5,8,15,.45); backdrop-filter: blur(4px);
+  }
+  .cover .body { padding: 2mm 16mm 0; }
+  .cover h1 { font-size: 37pt; line-height: 1.04; font-weight: 700; letter-spacing: -.02em; margin: 5mm 0 5mm; }
+  .cover .sub { font-size: 12pt; color: #c9d2df; max-width: 150mm; font-weight: 300; }
+  .stats { display: grid; grid-template-columns: repeat(3, 1fr); gap: 4mm; margin-top: 11mm; }
+  .stat { padding: 5mm 5mm 4.5mm; }
+  .stat .n { font-family: 'Sora'; font-size: 26pt; font-weight: 700; line-height: 1; }
+  .stat .l { font-size: 8pt; color: var(--muted); margin-top: 2.5mm; line-height: 1.4; }
+  .stat .l b { color: var(--text); font-weight: 600; display: block; font-size: 8.8pt; margin-bottom: .5mm; }
+  .cover .tagline {
+    position: absolute; left: 16mm; right: 16mm; bottom: 20mm;
+    font-family: 'Sora'; font-weight: 600; font-size: 10pt; letter-spacing: .14em;
+    display: flex; justify-content: space-between; align-items: center;
+  }
+  .cover .tagline .site { color: var(--dim); font-size: 7pt; letter-spacing: .22em; font-weight: 500; }
+
+  /* ---------- About / process ---------- */
+  .about-h { font-size: 22pt; line-height: 1.15; font-weight: 700; letter-spacing: -.01em; margin: 4mm 0 5mm; }
+  .two { display: grid; grid-template-columns: 1fr 1fr; gap: 8mm; }
+  .services { display: flex; flex-wrap: wrap; gap: 2mm; margin-top: 6mm; }
+  .process { margin-top: 10mm; position: relative; }
+  .process h3 { font-size: 13pt; font-weight: 600; margin-bottom: 5mm; }
+  .steps { display: grid; grid-template-columns: repeat(4, 1fr); gap: 3.5mm; position: relative; }
+  .step { padding: 5mm 4.5mm 5mm; position: relative; }
+  .step .k {
+    width: 10mm; height: 10mm; border-radius: 3mm; display: grid; place-items: center;
+    background: linear-gradient(135deg, var(--orange), #c63b0b); color: #fff;
+    font-family: 'Sora'; font-weight: 700; font-size: 10pt;
+    box-shadow: 0 0 6mm rgba(255,91,31,.35);
+  }
+  .step h4 { font-family: 'Sora'; font-size: 9.6pt; font-weight: 600; margin: 4mm 0 2mm; line-height: 1.25; }
+  .step p { font-size: 7.8pt; color: var(--muted); line-height: 1.5; }
+  .step:not(:last-child)::after {
+    content: ''; position: absolute; top: 10mm; right: -3.5mm; width: 3.5mm; height: 1px;
+    background: linear-gradient(90deg, var(--orange), transparent);
+  }
+  .why { display: grid; grid-template-columns: repeat(3, 1fr); gap: 6mm; margin-top: 10mm; padding-top: 7mm; border-top: 1px solid var(--line); }
+  .why div h4 { font-family: 'Sora'; font-size: 9.6pt; font-weight: 600; margin: 2.5mm 0 1.5mm; }
+  .why div p { font-size: 7.9pt; color: var(--muted); line-height: 1.5; }
+  .why .bar { width: 10mm; height: 2px; background: var(--orange); }
+  .quote {
+    margin-top: 10mm; padding: 7mm 8mm; display: flex; align-items: center; gap: 7mm;
+    border-left: 3px solid var(--orange); border-radius: 0 4mm 4mm 0;
+    background: linear-gradient(90deg, rgba(255,91,31,.10), rgba(255,91,31,0));
+  }
+  .quote img { height: 20mm; filter: drop-shadow(0 0 5mm rgba(255,91,31,.45)); }
+  .quote p { font-family: 'Sora'; font-size: 13pt; font-weight: 600; line-height: 1.3; }
+  .quote small { display: block; font-family: 'Inter'; font-size: 8pt; font-weight: 400; color: var(--muted); margin-top: 2mm; }
+
+  /* ---------- Image pages ---------- */
+  .showcase { display: flex; justify-content: center; margin-top: 7mm; }
+  .showcase img { border-radius: 4mm; border: 1px solid var(--line); box-shadow: 0 6mm 16mm rgba(0,0,0,.55), 0 0 18mm rgba(47,123,255,.12); }
+  .sectors { display: flex; flex-wrap: wrap; justify-content: center; gap: 2mm; margin-top: 7mm; }
+
+  /* ---------- Plans ---------- */
+  .plans { display: flex; flex-direction: column; gap: 3.6mm; margin-top: 7mm; }
+  .plan {
+    display: grid; grid-template-columns: 26mm 1fr 22mm 48mm; align-items: center;
+    padding: 5.4mm 6mm; position: relative;
+  }
+  .plan .id { font-family: 'Sora'; }
+  .plan .id small { display: block; font-size: 6.8pt; letter-spacing: .2em; color: var(--muted); }
+  .plan .id span { font-size: 22pt; font-weight: 700; line-height: 1; }
+  .plan .what { display: flex; gap: 6mm; }
+  .plan .what div { display: flex; align-items: center; gap: 2.2mm; font-size: 8.6pt; color: #c9d2df; line-height: 1.25; }
+  .plan .what b { font-family: 'Sora'; font-size: 15pt; color: #fff; font-weight: 700; }
+  .plan .ses { font-size: 7.8pt; color: var(--muted); text-align: center; border-left: 1px solid var(--line); border-right: 1px solid var(--line); padding: 1mm 0; }
+  .plan .ses b { display: block; font-family: 'Sora'; color: var(--text); font-size: 11pt; }
+  .plan .price { text-align: right; }
+  .plan .price .v { font-family: 'Sora'; font-size: 20pt; font-weight: 700; line-height: 1; }
+  .plan .price .v sup { font-size: 9pt; font-weight: 600; vertical-align: top; margin-right: .6mm; position: relative; top: 1.2mm; color: var(--muted); }
+  .plan .price .u { font-size: 7pt; color: var(--muted); margin-top: 1.6mm; }
+  .plan.hl {
+    border: 1px solid rgba(255,91,31,.75);
+    background: linear-gradient(90deg, rgba(255,91,31,.16), rgba(255,91,31,.04));
+    box-shadow: 0 0 10mm rgba(255,91,31,.18);
+  }
+  .plan.hl .price .v { color: var(--orange); }
+  .badge {
+    position: absolute; top: -2.6mm; right: 6mm;
+    font-family: 'Sora'; font-size: 6.4pt; font-weight: 700; letter-spacing: .18em; text-transform: uppercase;
+    background: var(--orange); color: #fff; padding: 1mm 3mm; border-radius: 20mm;
+  }
+  .includes { margin-top: 7mm; padding: 5.5mm 6mm; display: grid; grid-template-columns: 1fr 1fr; gap: 3mm 8mm; }
+  .includes h4 { grid-column: 1 / -1; font-family: 'Sora'; font-size: 9.5pt; font-weight: 600; margin-bottom: 1mm; }
+  .includes div { display: flex; gap: 2.5mm; align-items: flex-start; font-size: 8.3pt; color: #c9d2df; }
+  .note { margin-top: 5mm; font-size: 7.8pt; color: var(--muted); display: flex; gap: 2.5mm; align-items: flex-start; }
+
+  /* ---------- Distribution ---------- */
+  .blk { padding: 6mm 6.5mm; }
+  .blk + .blk { margin-top: 5mm; }
+  .blk-h { display: flex; justify-content: space-between; align-items: flex-start; gap: 6mm; margin-bottom: 3mm; }
+  .blk-h h3 { font-size: 13pt; font-weight: 600; line-height: 1.25; }
+  .pill {
+    flex: none; font-family: 'Sora'; font-size: 6.6pt; font-weight: 700; letter-spacing: .16em; text-transform: uppercase;
+    padding: 1.4mm 3.2mm; border-radius: 20mm; border: 1px solid rgba(255,91,31,.6); color: var(--orange2); background: rgba(255,91,31,.1);
+  }
+  .pill.solid { background: var(--orange); color: #fff; border-color: var(--orange); }
+  .blk p { font-size: 8.6pt; color: #c9d2df; }
+  .cols { display: grid; grid-template-columns: 1fr 1fr; gap: 5mm; margin-top: 4.5mm; }
+  .col h5 { font-family: 'Sora'; font-size: 7pt; letter-spacing: .18em; text-transform: uppercase; color: var(--muted); margin-bottom: 2.5mm; font-weight: 600; }
+  .li { display: flex; gap: 2.2mm; align-items: flex-start; font-size: 8.1pt; color: #c9d2df; margin-bottom: 1.6mm; line-height: 1.4; }
+  .li svg { width: 3.8mm; height: 3.8mm; margin-top: .2mm; }
+  .li.x svg { stroke: var(--dim); }
+  .li.x { color: var(--muted); }
+  .chips { display: flex; flex-wrap: wrap; gap: 1.8mm; margin-top: 4mm; }
+  .eq { margin-top: 5mm; padding: 6mm 6.5mm; border-radius: 4mm; background: linear-gradient(135deg, #101b33, #0a1120); border: 1px solid rgba(47,123,255,.3); position: relative; overflow: hidden; }
+  .eq::before { content: ''; position: absolute; right: -20mm; top: -20mm; width: 60mm; height: 60mm; background: radial-gradient(closest-side, rgba(255,91,31,.22), transparent); }
+  .eq h5 { font-family: 'Sora'; font-size: 7pt; letter-spacing: .2em; text-transform: uppercase; color: var(--orange2); font-weight: 600; }
+  .eq-row { display: flex; align-items: center; gap: 4mm; margin-top: 4mm; position: relative; }
+  .eq-item { flex: 1; }
+  .eq-item small { display: block; font-size: 7.4pt; color: var(--muted); line-height: 1.35; }
+  .eq-item b { font-family: 'Sora'; font-size: 17pt; font-weight: 700; display: block; margin-top: 1mm; }
+  .eq-op { font-family: 'Sora'; font-size: 16pt; color: var(--dim); font-weight: 300; }
+  .eq-item.total b { color: var(--orange); font-size: 21pt; }
+  .eq-foot { font-size: 7.4pt; color: var(--muted); margin-top: 4mm; border-top: 1px dashed rgba(255,255,255,.12); padding-top: 3mm; position: relative; }
+
+  /* ---------- Conditions / CTA ---------- */
+  .grid2 { display: grid; grid-template-columns: 1fr 1fr; gap: 4mm; margin-top: 2mm; }
+  .cond { padding: 5.5mm 5.5mm 5mm; }
+  .cond .top { display: flex; align-items: center; gap: 3mm; margin-bottom: 2.6mm; }
+  .cond .top span { font-family: 'Sora'; font-size: 9pt; font-weight: 700; color: var(--orange); }
+  .cond h4 { font-family: 'Sora'; font-size: 9.6pt; font-weight: 600; line-height: 1.3; }
+  .cond p { font-size: 8pt; color: var(--muted); line-height: 1.5; }
+  .cta {
+    margin-top: 8mm; border-radius: 5mm; position: relative; overflow: hidden;
+    padding: 9mm 9mm 8mm; border: 1px solid rgba(255,91,31,.45);
+    background:
+      radial-gradient(70mm 60mm at 100% 0%, rgba(255,91,31,.28), transparent 70%),
+      radial-gradient(70mm 60mm at 0% 100%, rgba(47,123,255,.22), transparent 70%),
+      #0a1120;
+  }
+  .cta .logo { position: absolute; right: 8mm; top: 6mm; height: 46mm; filter: drop-shadow(0 0 8mm rgba(255,91,31,.55)); opacity: .95; }
+  .cta h2 { font-size: 22pt; line-height: 1.12; font-weight: 700; max-width: 115mm; letter-spacing: -.01em; }
+  .cta p { color: #c9d2df; font-size: 9pt; margin-top: 3mm; max-width: 112mm; }
+  .cta .flow { display: flex; gap: 2.5mm; margin-top: 6mm; align-items: center; }
+  .cta .flow div { flex: 1; padding: 3.4mm 3.6mm; border-radius: 3mm; background: rgba(255,255,255,.05); border: 1px solid var(--line); font-size: 7.8pt; color: #c9d2df; line-height: 1.35; }
+  .cta .flow div b { display: block; font-family: 'Sora'; color: var(--orange2); font-size: 7pt; letter-spacing: .16em; margin-bottom: 1mm; }
+  .cta .flow .arrow { flex: none; padding: 0; background: none; border: none; color: var(--orange); font-size: 11pt; }
+  .cta .flow .final { background: var(--orange); border-color: var(--orange); color: #fff; }
+  .cta .flow .final b { color: #fff; opacity: .85; }
+</style>
+</head>
+<body>
+
+<!-- SVG symbols -->
+<svg width="0" height="0" style="position:absolute">
+  <defs>
+    <symbol id="i-check" viewBox="0 0 24 24"><path d="M20 6 9 17l-5-5"/></symbol>
+    <symbol id="i-x" viewBox="0 0 24 24"><path d="M18 6 6 18M6 6l12 12"/></symbol>
+    <symbol id="i-video" viewBox="0 0 24 24"><rect x="2" y="6" width="14" height="12" rx="2"/><path d="m16 10 6-3v10l-6-3"/></symbol>
+    <symbol id="i-photo" viewBox="0 0 24 24"><path d="M4 8h3l2-3h6l2 3h3a1 1 0 0 1 1 1v10a1 1 0 0 1-1 1H4a1 1 0 0 1-1-1V9a1 1 0 0 1 1-1z"/><circle cx="12" cy="13.5" r="3.5"/></symbol>
+    <symbol id="i-info" viewBox="0 0 24 24"><circle cx="12" cy="12" r="9"/><path d="M12 11v6M12 7.5v.01"/></symbol>
+    <symbol id="i-user" viewBox="0 0 24 24"><circle cx="12" cy="8" r="4"/><path d="M4 21c1.5-4 4.5-6 8-6s6.5 2 8 6"/></symbol>
+    <symbol id="i-list" viewBox="0 0 24 24"><path d="M9 6h11M9 12h11M9 18h11M4 6h.01M4 12h.01M4 18h.01"/></symbol>
+    <symbol id="i-plus" viewBox="0 0 24 24"><rect x="3" y="3" width="18" height="18" rx="4"/><path d="M12 8v8M8 12h8"/></symbol>
+    <symbol id="i-cal" viewBox="0 0 24 24"><rect x="3" y="5" width="18" height="16" rx="2"/><path d="M3 10h18M8 3v4M16 3v4"/></symbol>
+  </defs>
+</svg>
+
+<!-- =============== 01 · PORTADA =============== -->
+<section class="page cover">
+  <div class="hero">
+    <img src="assets/cover.jpg" alt="">
+    <div class="tag">Propuesta comercial · 2026</div>
+  </div>
+  <div class="body">
+    <div class="eyebrow">Frague Studio · Propuesta comercial</div>
+    <h1>Producción audiovisual<br>y <span class="grad">publicidad digital</span></h1>
+    <p class="sub">Contenido profesional para marcas, empresas e instituciones. Convertimos tus productos, servicios e ideas en piezas visuales que comunican el valor de tu marca.</p>
+
+    <div class="stats">
+      <div class="stat card"><div class="n">1</div><div class="l"><b>Sesión por plan</b>Todo el contenido se produce en una única jornada.</div></div>
+      <div class="stat card"><div class="n grad">12</div><div class="l"><b>Piezas por sesión</b>Hasta 6 videos y 6 fotografías o piezas gráficas.</div></div>
+      <div class="stat card"><div class="n">S/0</div><div class="l"><b>Subida de videos</b>Publicamos en tus cuentas sin costo adicional.</div></div>
+    </div>
+  </div>
+  <div class="tagline"><span>UNA IDEA. UNA SESIÓN. <span class="orange">MÚLTIPLES POSIBILIDADES.</span></span><span class="site">Propuesta 2026</span></div>
+</section>
+
+<!-- =============== 02 · NOSOTROS + ALCANCE =============== -->
+<section class="page">
+  <div class="content" style="padding-top:18mm">
+    <div class="eyebrow">01 / Quiénes somos</div>
+    <h2 class="about-h">Creamos contenido que hace<br>que tu marca <span class="grad">se vea y se recuerde.</span></h2>
+    <div class="two">
+      <p class="lead">Creamos videos, fotografías y contenido publicitario para empresas, profesionales, marcas e instituciones.</p>
+      <p class="lead muted" style="font-size:10pt">Nuestros planes incluyen preparación creativa, grabación profesional y edición, con fotografías y la opción de subir los videos a las cuentas del cliente.</p>
+    </div>
+    <div class="services">
+      <span class="chip"><i></i>Video publicitario</span>
+      <span class="chip"><i></i>Fotografía profesional</span>
+      <span class="chip"><i></i>Piezas gráficas</span>
+      <span class="chip"><i></i>Publicación en redes</span>
+      <span class="chip"><i></i>Pauta digital</span>
+    </div>
+
+    <div class="process">
+      <div class="eyebrow" style="margin-bottom:3mm">Alcance del servicio</div>
+      <h3 class="sora">De la idea al contenido publicado, en cuatro etapas</h3>
+      <div class="steps">
+        <div class="step card">
+          <div class="k">01</div>
+          <h4>Preparación creativa</h4>
+          <p>Análisis e investigación, reunión estratégica, concepto, guion o estructura, selección musical y planificación de tomas.</p>
+        </div>
+        <div class="step card">
+          <div class="k">02</div>
+          <h4>Producción profesional</h4>
+          <p>Dirección y grabación con cámara profesional, junto con la captura de las fotografías incluidas en el plan.</p>
+        </div>
+        <div class="step card">
+          <div class="k">03</div>
+          <h4>Edición audiovisual</h4>
+          <p>Selección de tomas, montaje y acabado. Subtítulos, voz en off y efectos audiovisuales, según la propuesta creativa.</p>
+        </div>
+        <div class="step card">
+          <div class="k">04</div>
+          <h4>Entregables</h4>
+          <p>Videos finales listos para publicar y fotografías seleccionadas. Duración, formato y adaptaciones se acuerdan antes de la sesión.</p>
+        </div>
+      </div>
+    </div>
+
+    <div class="why">
+      <div><div class="bar"></div><h4>Estrategia antes de grabar</h4><p>Cada pieza parte de un análisis de tu marca, tu público y tus canales de destino.</p></div>
+      <div><div class="bar"></div><h4>Producción eficiente</h4><p>Una sola sesión planificada para obtener todo el contenido del plan.</p></div>
+      <div><div class="bar"></div><h4>Listo para publicar</h4><p>Videos y fotografías finales en los formatos que tus canales necesitan.</p></div>
+    </div>
+
+    <div class="quote">
+      <img src="assets/logo-orange.png" alt="">
+      <p>Una idea. Una sesión.<br>Múltiples posibilidades.
+        <small>Todo el contenido de tu plan se planifica, graba y produce en una sola jornada, optimizando tiempo e inversión.</small></p>
+    </div>
+  </div>
+  <div class="foot"><div class="brand"><img src="assets/logo-white.png" alt="">Frague Studio</div><div class="pg"><b>02</b> / 07</div></div>
+</section>
+
+<!-- =============== 03 · MARCAS =============== -->
+<section class="page">
+  <div class="band">
+    <img src="assets/b-marcas.jpg" alt="">
+    <div class="num">02</div>
+    <div class="inner">
+      <div class="eyebrow">Experiencia y confianza</div>
+      <h2>Marcas que confían<br>en nosotros</h2>
+      <p>Experiencia audiovisual con marcas, empresas e instituciones.</p>
+    </div>
+  </div>
+  <div class="content" style="padding-top:0">
+    <div class="showcase"><img src="assets/marcas.jpg" alt="" style="width:146mm"></div>
+    <div class="sectors">
+      <span class="chip"><i></i>Educación</span>
+      <span class="chip"><i></i>Construcción</span>
+      <span class="chip"><i></i>Servicios legales</span>
+      <span class="chip"><i></i>Ingeniería</span>
+      <span class="chip"><i></i>Distribución</span>
+    </div>
+  </div>
+  <div class="foot"><div class="brand"><img src="assets/logo-white.png" alt="">Frague Studio</div><div class="pg"><b>03</b> / 07</div></div>
+</section>
+
+<!-- =============== 04 · EQUIPOS =============== -->
+<section class="page">
+  <div class="band">
+    <img src="assets/b-equipos.jpg" alt="">
+    <div class="num">03</div>
+    <div class="inner">
+      <div class="eyebrow">Profesionalismo en cada grabación</div>
+      <h2>Equipos ideales para<br>proyectar tu imagen</h2>
+      <p>Tecnología profesional, elegida según las necesidades de tu proyecto.</p>
+    </div>
+  </div>
+  <div class="content" style="padding-top:0">
+    <div class="showcase"><img src="assets/equipos.jpg" alt="" style="width:160mm"></div>
+    <div class="sectors">
+      <span class="chip"><i></i>Cámaras profesionales</span>
+      <span class="chip"><i></i>Soporte y estabilización</span>
+      <span class="chip"><i></i>Iluminación</span>
+      <span class="chip"><i></i>Audio y accesorios</span>
+    </div>
+  </div>
+  <div class="foot"><div class="brand"><img src="assets/logo-white.png" alt="">Frague Studio</div><div class="pg"><b>04</b> / 07</div></div>
+</section>
+
+<!-- =============== 05 · PLANES =============== -->
+<section class="page">
+  <div class="band">
+    <img src="assets/b-planes.jpg" alt="">
+    <div class="num">04</div>
+    <div class="inner">
+      <div class="eyebrow">Escoge tu plan</div>
+      <h2>Planes de producción</h2>
+      <p>Cada plan contempla una única sesión. Todos los precios son sin IGV.</p>
+    </div>
+  </div>
+  <div class="content" style="padding-top:4mm">
+    <div class="plans">
+      <div class="plan card">
+        <div class="id"><small>PLAN</small><span>01</span></div>
+        <div class="what">
+          <div><svg class="ic"><use href="#i-video"/></svg><span><b>2</b> videos</span></div>
+          <div><svg class="ic"><use href="#i-photo"/></svg><span><b>2</b> fotos o<br>piezas gráficas</span></div>
+        </div>
+        <div class="ses"><b>1</b>sesión</div>
+        <div class="price"><div class="v"><sup>S/</sup>700</div><div class="u">S/350 por video + foto</div></div>
+      </div>
+      <div class="plan card">
+        <div class="id"><small>PLAN</small><span>02</span></div>
+        <div class="what">
+          <div><svg class="ic"><use href="#i-video"/></svg><span><b>3</b> videos</span></div>
+          <div><svg class="ic"><use href="#i-photo"/></svg><span><b>3</b> fotos o<br>piezas gráficas</span></div>
+        </div>
+        <div class="ses"><b>1</b>sesión</div>
+        <div class="price"><div class="v"><sup>S/</sup>1.000</div><div class="u">S/333 por video + foto</div></div>
+      </div>
+      <div class="plan card hl">
+        <span class="badge">Recomendado</span>
+        <div class="id"><small>PLAN</small><span>03</span></div>
+        <div class="what">
+          <div><svg class="ic"><use href="#i-video"/></svg><span><b>4</b> videos</span></div>
+          <div><svg class="ic"><use href="#i-photo"/></svg><span><b>4</b> fotos o<br>piezas gráficas</span></div>
+        </div>
+        <div class="ses"><b>1</b>sesión</div>
+        <div class="price"><div class="v"><sup>S/</sup>1.200</div><div class="u">S/300 por video + foto</div></div>
+      </div>
+      <div class="plan card">
+        <div class="id"><small>PLAN</small><span>04</span></div>
+        <div class="what">
+          <div><svg class="ic"><use href="#i-video"/></svg><span><b>5</b> videos</span></div>
+          <div><svg class="ic"><use href="#i-photo"/></svg><span><b>5</b> fotos o<br>piezas gráficas</span></div>
+        </div>
+        <div class="ses"><b>1</b>sesión</div>
+        <div class="price"><div class="v"><sup>S/</sup>1.425</div><div class="u">S/285 por video + foto</div></div>
+      </div>
+      <div class="plan card">
+        <div class="id"><small>PLAN</small><span>05</span></div>
+        <div class="what">
+          <div><svg class="ic"><use href="#i-video"/></svg><span><b>6</b> videos</span></div>
+          <div><svg class="ic"><use href="#i-photo"/></svg><span>Hasta <b>6</b> fotos o<br>piezas gráficas</span></div>
+        </div>
+        <div class="ses"><b>1</b>sesión</div>
+        <div class="price"><div class="v"><sup>S/</sup>1.680</div><div class="u">S/280 por video + foto</div></div>
+      </div>
+    </div>
+
+    <div class="includes card">
+      <h4>Todos los planes incluyen</h4>
+      <div><svg class="ic"><use href="#i-check"/></svg>Preparación creativa, concepto y guion</div>
+      <div><svg class="ic"><use href="#i-check"/></svg>Grabación con cámara profesional</div>
+      <div><svg class="ic"><use href="#i-check"/></svg>Edición, montaje y acabado audiovisual</div>
+      <div><svg class="ic"><use href="#i-check"/></svg>Subida de videos a tus cuentas, sin costo</div>
+    </div>
+    <div class="note"><svg class="ic" style="width:3.8mm;height:3.8mm"><use href="#i-info"/></svg>Todos los videos y fotografías contratados se producen en una única sesión. Los precios no incluyen IGV.</div>
+  </div>
+  <div class="foot"><div class="brand"><img src="assets/logo-white.png" alt="">Frague Studio</div><div class="pg"><b>05</b> / 07</div></div>
+</section>
+
+<!-- =============== 06 · DISTRIBUCIÓN Y PAUTA =============== -->
+<section class="page">
+  <div class="band">
+    <img src="assets/b-pauta.jpg" alt="">
+    <div class="num">05</div>
+    <div class="inner">
+      <div class="eyebrow">Distribución de contenido</div>
+      <h2>Publicación y pauta</h2>
+      <p>La producción, lista para tus canales.</p>
+    </div>
+  </div>
+  <div class="content" style="padding-top:7mm">
+    <div class="blk card">
+      <div class="blk-h"><h3>Entrega y publicación de videos</h3><span class="pill">Incluido · Sin costo adicional</span></div>
+      <p>Puedes recibir los archivos finales y gestionar tú mismo la publicación, o solicitar que FRAGUE STUDIO suba los videos del plan. Esta subida no tiene un cargo adicional.</p>
+      <div class="cols">
+        <div class="col">
+          <h5>Se coordina previamente</h5>
+          <div class="li"><svg class="ic"><use href="#i-check"/></svg>Cuentas de destino y accesos autorizados</div>
+          <div class="li"><svg class="ic"><use href="#i-check"/></svg>Fechas de publicación</div>
+          <div class="li"><svg class="ic"><use href="#i-check"/></svg>Textos aprobados por el cliente</div>
+        </div>
+        <div class="col">
+          <h5>No incluye</h5>
+          <div class="li x"><svg class="ic"><use href="#i-x"/></svg>Gestión diaria de redes sociales</div>
+          <div class="li x"><svg class="ic"><use href="#i-x"/></svg>Respuesta a comentarios, mensajes y comunidad</div>
+          <div class="li x"><svg class="ic"><use href="#i-x"/></svg>Publicación de fotos u otras piezas (acuerdo separado)</div>
+        </div>
+      </div>
+    </div>
+
+    <div class="blk card">
+      <div class="blk-h"><h3>Implementación de pauta publicitaria<br><span class="orange sora" style="font-size:16pt;font-weight:700">S/100</span> <span class="muted" style="font-size:8.5pt;font-weight:400;font-family:Inter">sin IGV</span></h3><span class="pill solid">Opcional</span></div>
+      <p>Servicio adicional al plan audiovisual. El presupuesto de la campaña corre exclusivamente por cuenta del cliente, quien decide cuánto invertir; ese importe va directamente a la plataforma de anuncios. La tarifa cubre la implementación; seguimiento, optimización continua o administración recurrente requieren un alcance específico.</p>
+      <div class="chips">
+        <span class="muted" style="font-size:7.6pt;width:100%">Antes de implementar acordamos:</span>
+        <span class="chip"><i></i>Objetivo</span><span class="chip"><i></i>Plataforma</span><span class="chip"><i></i>Audiencia</span>
+        <span class="chip"><i></i>Piezas</span><span class="chip"><i></i>Duración</span><span class="chip"><i></i>Presupuesto</span>
+      </div>
+    </div>
+
+    <div class="eq">
+      <h5>Ejemplo de inversión</h5>
+      <div class="eq-row">
+        <div class="eq-item"><small>Plan 03<br>4 videos + 4 fotografías</small><b>S/1.200</b></div>
+        <div class="eq-op">+</div>
+        <div class="eq-item"><small>Implementación<br>de pauta</small><b>S/100</b></div>
+        <div class="eq-op">=</div>
+        <div class="eq-item total"><small>Total servicios<br>FRAGUE STUDIO (sin IGV)</small><b>S/1.300</b></div>
+      </div>
+      <div class="eq-foot">La inversión en anuncios se paga por separado, directamente a la plataforma, según la decisión del cliente.</div>
+    </div>
+  </div>
+  <div class="foot"><div class="brand"><img src="assets/logo-white.png" alt="">Frague Studio</div><div class="pg"><b>06</b> / 07</div></div>
+</section>
+
+<!-- =============== 07 · CONDICIONES + CIERRE =============== -->
+<section class="page">
+  <div class="band">
+    <img src="assets/b-condiciones.jpg" alt="">
+    <div class="num">06</div>
+    <div class="inner">
+      <div class="eyebrow">Acuerdos y coordinación</div>
+      <h2>Condiciones del servicio</h2>
+      <p>Acuerdos claros para ejecutar una producción organizada.</p>
+    </div>
+  </div>
+  <div class="content" style="padding-top:7mm">
+    <div class="grid2">
+      <div class="cond card">
+        <div class="top"><svg class="ic"><use href="#i-user"/></svg><span>01</span></div>
+        <h4>Responsable del proyecto</h4>
+        <p>El cliente designa un responsable para centralizar coordinaciones y aprobar contenido. Antes de la grabación se define la lista de productos o servicios, ideas y recursos necesarios.</p>
+      </div>
+      <div class="cond card">
+        <div class="top"><svg class="ic"><use href="#i-list"/></svg><span>02</span></div>
+        <h4>Condiciones previas</h4>
+        <p>Duración de sesión, ubicación, traslados, talentos, plazos de entrega, revisiones, reprogramaciones y forma de pago se establecen en la cotización específica.</p>
+      </div>
+      <div class="cond card">
+        <div class="top"><svg class="ic"><use href="#i-plus"/></svg><span>03</span></div>
+        <h4>Adicionales y archivos originales</h4>
+        <p>Piezas, formatos o sesiones adicionales se cotizan por separado. Se entregan archivos finales; material original o editable debe acordarse expresamente.</p>
+      </div>
+      <div class="cond card">
+        <div class="top"><svg class="ic"><use href="#i-cal"/></svg><span>04</span></div>
+        <h4>Servicio mensual</h4>
+        <p>Si el servicio se contrata mensualmente, las cantidades y la única sesión del plan corresponden a cada período contratado.</p>
+      </div>
+    </div>
+
+    <div class="cta">
+      <img class="logo" src="assets/logo-orange.png" alt="">
+      <div class="eyebrow">Hablemos de tu proyecto</div>
+      <h2 style="margin-top:3mm">Tu marca merece contenido <span class="grad">extraordinario.</span></h2>
+      <p>Cuéntanos qué quieres comunicar, a quién te diriges y dónde publicarás el contenido. Definiremos contigo el plan y el enfoque creativo adecuados.</p>
+      <div class="flow">
+        <div><b>01</b>Qué quieres comunicar</div>
+        <span class="arrow">→</span>
+        <div><b>02</b>A quién te diriges</div>
+        <span class="arrow">→</span>
+        <div><b>03</b>Dónde publicarás</div>
+        <span class="arrow">→</span>
+        <div class="final"><b>FRAGUE</b>Tu plan a medida</div>
+      </div>
+    </div>
+  </div>
+  <div class="foot"><div class="brand"><img src="assets/logo-white.png" alt="">Frague Studio · Producción audiovisual y publicidad digital</div><div class="pg"><b>07</b> / 07</div></div>
+</section>
+
+</body>
+</html>
