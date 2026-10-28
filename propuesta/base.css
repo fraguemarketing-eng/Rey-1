@@ -1,0 +1,226 @@
+  @page { size: A4; margin: 0; }
+  :root {
+    --bg: #05080f;
+    --bg2: #0a1120;
+    --panel: rgba(255,255,255,.035);
+    --line: rgba(255,255,255,.09);
+    --text: #eef2f8;
+    --muted: #93a0b5;
+    --dim: #5d6a80;
+    --orange: #ff5b1f;
+    --orange2: #ff8a3d;
+    --blue: #2f7bff;
+  }
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+  html, body { background: var(--bg); }
+  body {
+    font-family: 'Inter', sans-serif;
+    color: var(--text);
+    -webkit-print-color-adjust: exact; print-color-adjust: exact;
+    font-size: 9.5pt; line-height: 1.55;
+  }
+  .page {
+    position: relative; width: 210mm; height: 297mm; overflow: hidden;
+    background:
+var(--bg) url(assets/page-bg.jpg) center / 100% 100% no-repeat;
+    page-break-after: always; break-after: page;
+  }
+  .page:last-child { page-break-after: auto; break-after: auto; }
+  h1, h2, h3, .sora { font-family: 'Sora', sans-serif; }
+  .orange { color: var(--orange); }
+  .grad { color: var(--orange); }
+  .eyebrow {
+    font-family: 'Sora', sans-serif; font-size: 7.5pt; font-weight: 600;
+    letter-spacing: .22em; text-transform: uppercase; color: var(--orange);
+    display: flex; align-items: center; gap: 3mm;
+  }
+  .eyebrow::before { content: ''; width: 8mm; height: 2px; background: var(--orange); border-radius: 2px; }
+
+  /* ---------- Section header band ---------- */
+  .band { position: relative; height: 70mm; overflow: hidden; border-bottom: 1px solid var(--line); }
+  .band img {
+    position: absolute; right: 0; top: 0; height: 100%;
+  }
+  .band .inner { position: absolute; left: 16mm; bottom: 12mm; z-index: 2; width: 120mm; }
+  .band .num {
+    font-family: 'Sora'; font-weight: 800; font-size: 40pt; line-height: 1;
+    color: transparent; -webkit-text-stroke: 1px rgba(255,255,255,.22);
+    position: absolute; left: 16mm; top: 7mm; z-index: 2;
+  }
+  .band h2 {
+    font-size: 25pt; font-weight: 700; line-height: 1.08; letter-spacing: -.01em; margin-top: 3mm;
+  }
+  .band p { color: var(--muted); margin-top: 2mm; font-size: 9.5pt; }
+
+  .content { padding: 10mm 16mm 0; }
+  .lead { font-size: 11pt; color: #c9d2df; line-height: 1.6; }
+  .muted { color: var(--muted); }
+
+  /* ---------- Footer ---------- */
+  .foot {
+    position: absolute; left: 16mm; right: 16mm; bottom: 9mm;
+    display: flex; justify-content: space-between; align-items: center;
+    font-family: 'Sora'; font-size: 6.5pt; letter-spacing: .2em; color: var(--dim); text-transform: uppercase;
+    border-top: 1px solid var(--line); padding-top: 4mm;
+  }
+  .foot .brand { display: flex; align-items: center; gap: 2.5mm; color: var(--muted); }
+  .foot .brand img { height: 5mm; opacity: .9; }
+  .foot .pg b { color: var(--text); font-weight: 600; }
+
+  .card {
+    background: #0c111c;
+    border: 1px solid #1b2232; border-radius: 4mm;
+  }
+  .chip {
+    display: inline-flex; align-items: center; gap: 1.6mm;
+    border: 1px solid var(--line); border-radius: 20mm; padding: 1.3mm 3.4mm;
+    font-size: 7.6pt; color: #c9d2df; background: rgba(255,255,255,.03);
+  }
+  .chip i { width: 1.6mm; height: 1.6mm; border-radius: 50%; background: var(--orange); display: inline-block; }
+  svg.ic { width: 4.6mm; height: 4.6mm; stroke: var(--orange); fill: none; stroke-width: 1.8; stroke-linecap: round; stroke-linejoin: round; flex: none; }
+
+  /* ---------- Cover ---------- */
+  .cover .hero { position: relative; height: 125mm; }
+  .cover .hero img {
+    width: 100%; height: 100%; object-fit: cover; object-position: center;
+  }
+  .cover .tag {
+    position: absolute; top: 9mm; right: 12mm; z-index: 2;
+    font-family: 'Sora'; font-size: 7pt; letter-spacing: .22em; text-transform: uppercase;
+    border: 1px solid rgba(255,255,255,.22); border-radius: 20mm; padding: 1.6mm 4mm; color: #fff;
+    background: #0b1220;
+  }
+  .cover .body { padding: 2mm 16mm 0; }
+  .cover h1 { font-size: 37pt; line-height: 1.04; font-weight: 700; letter-spacing: -.02em; margin: 5mm 0 5mm; }
+  .cover .sub { font-size: 12pt; color: #c9d2df; max-width: 150mm; font-weight: 300; }
+  .stats { display: grid; grid-template-columns: repeat(3, 1fr); gap: 4mm; margin-top: 11mm; }
+  .stat { padding: 5mm 5mm 4.5mm; }
+  .stat .n { font-family: 'Sora'; font-size: 26pt; font-weight: 700; line-height: 1; }
+  .stat .l { font-size: 8pt; color: var(--muted); margin-top: 2.5mm; line-height: 1.4; }
+  .stat .l b { color: var(--text); font-weight: 600; display: block; font-size: 8.8pt; margin-bottom: .5mm; }
+  .cover .tagline {
+    position: absolute; left: 16mm; right: 16mm; bottom: 20mm;
+    font-family: 'Sora'; font-weight: 600; font-size: 10pt; letter-spacing: .14em;
+    display: flex; justify-content: space-between; align-items: center;
+  }
+  .cover .tagline .site { color: var(--dim); font-size: 7pt; letter-spacing: .22em; font-weight: 500; }
+
+  /* ---------- About / process ---------- */
+  .about-h { font-size: 22pt; line-height: 1.15; font-weight: 700; letter-spacing: -.01em; margin: 4mm 0 5mm; }
+  .two { display: grid; grid-template-columns: 1fr 1fr; gap: 8mm; }
+  .services { display: flex; flex-wrap: wrap; gap: 2mm; margin-top: 6mm; }
+  .process { margin-top: 10mm; position: relative; }
+  .process h3 { font-size: 13pt; font-weight: 600; margin-bottom: 5mm; }
+  .steps { display: grid; grid-template-columns: repeat(4, 1fr); gap: 3.5mm; position: relative; }
+  .step { padding: 5mm 4.5mm 5mm; position: relative; }
+  .step .k { display: flex; align-items: center; gap: 2.5mm; }
+  .step .k span { font-family: 'Sora'; font-weight: 700; font-size: 20pt; line-height: 1; color: var(--orange); letter-spacing: -.02em; }
+  .step .k em { font-style: normal; font-family: 'Sora'; font-size: 6.2pt; font-weight: 600; letter-spacing: .2em; text-transform: uppercase; color: var(--dim); }
+  .step .k::after { content: ''; flex: 1; height: 1px; background: #3a2018; }
+  .step h4 { font-family: 'Sora'; font-size: 9.6pt; font-weight: 600; margin: 4mm 0 2mm; line-height: 1.25; }
+  .step p { font-size: 7.8pt; color: var(--muted); line-height: 1.5; }
+  .why { display: grid; grid-template-columns: repeat(3, 1fr); gap: 6mm; margin-top: 10mm; padding-top: 7mm; border-top: 1px solid var(--line); }
+  .why div h4 { font-family: 'Sora'; font-size: 9.6pt; font-weight: 600; margin: 2.5mm 0 1.5mm; }
+  .why div p { font-size: 7.9pt; color: var(--muted); line-height: 1.5; }
+  .why .bar { width: 10mm; height: 2px; background: var(--orange); }
+  .quote {
+    margin-top: 10mm; padding: 7mm 8mm; display: flex; align-items: center; gap: 7mm;
+    border-left: 3px solid var(--orange); border-radius: 0 4mm 4mm 0;
+    background: #160f10;
+  }
+  .quote img { height: 27mm; margin: -4mm -3mm; }
+  .quote p { font-family: 'Sora'; font-size: 13pt; font-weight: 600; line-height: 1.3; }
+  .quote small { display: block; font-family: 'Inter'; font-size: 8pt; font-weight: 400; color: var(--muted); margin-top: 2mm; }
+
+  /* ---------- Image pages ---------- */
+  .showcase { display: flex; justify-content: center; margin-top: 7mm; }
+  .showcase img { border-radius: 4mm; border: 1px solid var(--line); }
+  .sectors { display: flex; flex-wrap: wrap; justify-content: center; gap: 2mm; margin-top: 7mm; }
+
+  /* ---------- Plans ---------- */
+  .plans { display: flex; flex-direction: column; gap: 3.6mm; margin-top: 7mm; }
+  .plan {
+    display: grid; grid-template-columns: 26mm 1fr 22mm 48mm; align-items: center;
+    padding: 5.4mm 6mm; position: relative;
+  }
+  .plan .id { font-family: 'Sora'; }
+  .plan .id small { display: block; font-size: 6.8pt; letter-spacing: .2em; color: var(--muted); }
+  .plan .id span { font-size: 22pt; font-weight: 700; line-height: 1; }
+  .plan .what { display: flex; gap: 6mm; }
+  .plan .what div { display: flex; align-items: center; gap: 2.2mm; font-size: 8.6pt; color: #c9d2df; line-height: 1.25; }
+  .plan .what b { font-family: 'Sora'; font-size: 15pt; color: #fff; font-weight: 700; }
+  .plan .ses { font-size: 7.8pt; color: var(--muted); text-align: center; border-left: 1px solid var(--line); border-right: 1px solid var(--line); padding: 1mm 0; }
+  .plan .ses b { display: block; font-family: 'Sora'; color: var(--text); font-size: 11pt; }
+  .plan .price { text-align: right; }
+  .plan .price .v { font-family: 'Sora'; font-size: 20pt; font-weight: 700; line-height: 1; }
+  .plan .price .v sup { font-size: 9pt; font-weight: 600; vertical-align: top; margin-right: .6mm; position: relative; top: 1.2mm; color: var(--muted); }
+  .plan .price .u { font-size: 7pt; color: var(--muted); margin-top: 1.6mm; }
+  .plan.hl {
+    border: 1px solid rgba(255,91,31,.75);
+    background: #1c120f;
+  }
+  .plan.hl .price .v { color: var(--orange); }
+  .badge {
+    position: absolute; top: -2.6mm; right: 6mm;
+    font-family: 'Sora'; font-size: 6.4pt; font-weight: 700; letter-spacing: .18em; text-transform: uppercase;
+    background: var(--orange); color: #fff; padding: 1mm 3mm; border-radius: 20mm;
+  }
+  .includes { margin-top: 7mm; padding: 5.5mm 6mm; display: grid; grid-template-columns: 1fr 1fr; gap: 3mm 8mm; }
+  .includes h4 { grid-column: 1 / -1; font-family: 'Sora'; font-size: 9.5pt; font-weight: 600; margin-bottom: 1mm; }
+  .includes div { display: flex; gap: 2.5mm; align-items: flex-start; font-size: 8.3pt; color: #c9d2df; }
+  .note { margin-top: 5mm; font-size: 7.8pt; color: var(--muted); display: flex; gap: 2.5mm; align-items: flex-start; }
+
+  /* ---------- Distribution ---------- */
+  .blk { padding: 6mm 6.5mm; }
+  .blk + .blk { margin-top: 5mm; }
+  .blk-h { display: flex; justify-content: space-between; align-items: flex-start; gap: 6mm; margin-bottom: 3mm; }
+  .blk-h h3 { font-size: 13pt; font-weight: 600; line-height: 1.25; }
+  .pill {
+    flex: none; font-family: 'Sora'; font-size: 6.6pt; font-weight: 700; letter-spacing: .16em; text-transform: uppercase;
+    padding: 1.4mm 3.2mm; border-radius: 20mm; border: 1px solid rgba(255,91,31,.6); color: var(--orange2); background: rgba(255,91,31,.1);
+  }
+  .pill.solid { background: var(--orange); color: #fff; border-color: var(--orange); }
+  .blk p { font-size: 8.6pt; color: #c9d2df; }
+  .cols { display: grid; grid-template-columns: 1fr 1fr; gap: 5mm; margin-top: 4.5mm; }
+  .col h5 { font-family: 'Sora'; font-size: 7pt; letter-spacing: .18em; text-transform: uppercase; color: var(--muted); margin-bottom: 2.5mm; font-weight: 600; }
+  .li { display: flex; gap: 2.2mm; align-items: flex-start; font-size: 8.1pt; color: #c9d2df; margin-bottom: 1.6mm; line-height: 1.4; }
+  .li svg { width: 3.8mm; height: 3.8mm; margin-top: .2mm; }
+  .li.x svg { stroke: var(--dim); }
+  .li.x { color: var(--muted); }
+  .chips { display: flex; flex-wrap: wrap; gap: 1.8mm; margin-top: 4mm; }
+  .eq { margin-top: 5mm; padding: 6mm 6.5mm; border-radius: 4mm; background: #0d1628; border: 1px solid #1e3560; position: relative; overflow: hidden; }
+  .eq h5 { font-family: 'Sora'; font-size: 7pt; letter-spacing: .2em; text-transform: uppercase; color: var(--orange2); font-weight: 600; }
+  .eq-row { display: flex; align-items: center; gap: 4mm; margin-top: 4mm; position: relative; }
+  .eq-item { flex: 1; }
+  .eq-item small { display: block; font-size: 7.4pt; color: var(--muted); line-height: 1.35; }
+  .eq-item b { font-family: 'Sora'; font-size: 17pt; font-weight: 700; display: block; margin-top: 1mm; }
+  .eq-op { font-family: 'Sora'; font-size: 16pt; color: var(--dim); font-weight: 300; }
+  .eq-item.total b { color: var(--orange); font-size: 21pt; }
+  .eq-foot { font-size: 7.4pt; color: var(--muted); margin-top: 4mm; border-top: 1px dashed rgba(255,255,255,.12); padding-top: 3mm; position: relative; }
+
+  /* ---------- Conditions / CTA ---------- */
+  .grid2 { display: grid; grid-template-columns: 1fr 1fr; gap: 4mm; margin-top: 2mm; }
+  .cond { padding: 4.5mm 5mm 4.2mm; }
+  .cond .top { display: flex; align-items: center; gap: 3mm; margin-bottom: 2.6mm; }
+  .cond.feat { grid-column: 1 / -1; display: flex; align-items: center; gap: 6mm; border-color: #ff5b1f; background: #1c120f; }
+  .cond.feat .big { font-family: 'Sora'; font-size: 30pt; font-weight: 700; color: var(--orange); line-height: 1; flex: none; }
+  .cond.feat .big small { display: block; font-size: 6.4pt; letter-spacing: .2em; color: var(--muted); font-weight: 600; margin-top: 1.5mm; text-transform: uppercase; }
+  .cond.feat .txt { border-left: 1px solid #3a2018; padding-left: 6mm; }
+  .cond .top span { font-family: 'Sora'; font-size: 9pt; font-weight: 700; color: var(--orange); }
+  .cond h4 { font-family: 'Sora'; font-size: 9.6pt; font-weight: 600; line-height: 1.3; }
+  .cond p { font-size: 8pt; color: var(--muted); line-height: 1.5; }
+  .cta {
+    margin-top: 4mm; border-radius: 5mm; position: relative; overflow: hidden;
+    padding: 7mm 8mm 6.5mm; border: 1px solid rgba(255,91,31,.45);
+    background:
+#0a1120 url(assets/cta-bg.jpg) center / 100% 100% no-repeat;
+  }
+  .cta .logo { position: absolute; right: 2mm; top: -2mm; height: 54mm; }
+  .cta h2 { font-size: 22pt; line-height: 1.12; font-weight: 700; max-width: 115mm; letter-spacing: -.01em; }
+  .cta p { color: #c9d2df; font-size: 9pt; margin-top: 3mm; max-width: 112mm; }
+  .cta .flow { display: flex; gap: 2.5mm; margin-top: 6mm; align-items: center; }
+  .cta .flow div { flex: 1; padding: 3.4mm 3.6mm; border-radius: 3mm; background: rgba(255,255,255,.05); border: 1px solid var(--line); font-size: 7.8pt; color: #c9d2df; line-height: 1.35; }
+  .cta .flow div b { display: block; font-family: 'Sora'; color: var(--orange2); font-size: 7pt; letter-spacing: .16em; margin-bottom: 1mm; }
+  .cta .flow .arrow { flex: none; padding: 0; background: none; border: none; color: var(--orange); font-size: 11pt; }
+  .cta .flow .final { background: var(--orange); border-color: var(--orange); color: #fff; }
+  .cta .flow .final b { color: #fff; opacity: .85; }

@@ -1,0 +1,329 @@
+<!doctype html>
+<html lang="es">
+<head>
+<meta charset="utf-8">
+<title>FRAGUE STUDIO | Producción de Podcast</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Sora:wght@300;400;500;600;700;800&family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="base.css">
+<style>
+  /* ---------- Podcast cover ---------- */
+  .pc-hero { position: relative; height: 128mm; }
+  .pc-hero .art { position: absolute; right: 0; top: 0; height: 112mm; }
+  .pc-hero .brand { position: absolute; left: 16mm; top: 14mm; display: flex; align-items: center; gap: 3mm; z-index: 2; }
+  .pc-hero .brand img { height: 15mm; margin: -3mm -2mm; }
+  .pc-hero .brand div { font-family: 'Sora'; font-weight: 700; font-size: 15pt; letter-spacing: .04em; line-height: 1; }
+  .pc-hero .brand div small { display: block; font-weight: 400; font-size: 6.5pt; letter-spacing: .5em; color: var(--muted); margin-top: 1.4mm; }
+  .pc-hero .word {
+    position: absolute; left: 14mm; top: 46mm; z-index: 2;
+    font-family: 'Sora'; font-weight: 800; font-size: 66pt; line-height: .9; letter-spacing: -.03em;
+  }
+  .pc-hero .word .o { color: transparent; -webkit-text-stroke: 1.4px var(--orange); }
+  .wave { position: absolute; left: 16mm; bottom: 10mm; display: flex; align-items: center; gap: 1.15mm; height: 22mm; z-index: 2; }
+  .wave i { display: block; width: 1.2mm; border-radius: 1mm; background: #24324d; }
+  .wave i.on { background: var(--orange); }
+
+  /* ---------- Package ---------- */
+  .offer { display: flex; justify-content: space-between; align-items: center; gap: 8mm; padding: 7mm 7mm; border-color: #ff5b1f; background: #1c120f; position: relative; }
+  .offer h3 { font-size: 16pt; font-weight: 700; line-height: 1.2; }
+  .offer p { color: #c9d2df; font-size: 8.8pt; margin-top: 2mm; max-width: 100mm; }
+  .offer .price { text-align: right; flex: none; }
+  .offer .price .v { font-family: 'Sora'; font-weight: 700; font-size: 38pt; line-height: 1; color: var(--orange); }
+  .offer .price .v sup { font-size: 13pt; color: var(--muted); vertical-align: top; position: relative; top: 2.5mm; margin-right: 1mm; }
+  .offer .price small { display: block; font-size: 7.4pt; color: var(--muted); margin-top: 2mm; letter-spacing: .04em; }
+  .feat-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 3.5mm; margin-top: 5mm; }
+  .feat { padding: 5mm 4.6mm 4.6mm; }
+  .feat .ico { width: 9mm; height: 9mm; border-radius: 2.6mm; display: grid; place-items: center; background: #1f1410; border: 1px solid #4a2416; }
+  .feat .ico svg { width: 5mm; height: 5mm; }
+  .feat h4 { font-family: 'Sora'; font-size: 9.6pt; font-weight: 600; margin: 3.4mm 0 1.4mm; line-height: 1.25; }
+  .feat p { font-size: 7.8pt; color: var(--muted); line-height: 1.45; }
+  .sub-h { font-family: 'Sora'; font-size: 12pt; font-weight: 600; margin: 8mm 0 4mm; display: flex; align-items: center; gap: 3mm; }
+  .sub-h::after { content: ''; flex: 1; height: 1px; background: #1b2232; }
+  .loc { display: grid; grid-template-columns: 1fr auto 1fr; gap: 4mm; align-items: center; }
+  .loc .card { padding: 5mm 5.5mm; display: flex; gap: 4mm; align-items: flex-start; }
+  .loc h4 { font-family: 'Sora'; font-size: 10pt; font-weight: 600; }
+  .loc p { font-size: 7.9pt; color: var(--muted); margin-top: 1mm; line-height: 1.45; }
+  .loc .or { font-family: 'Sora'; font-size: 7pt; font-weight: 700; letter-spacing: .2em; color: var(--orange); }
+  .value { margin-top: 6mm; display: flex; align-items: center; gap: 4mm; font-size: 8.4pt; color: #c9d2df; padding: 4mm 5.5mm; border-radius: 3mm; background: #0d1628; border: 1px solid #1e3560; }
+  .value b { color: var(--orange2); font-family: 'Sora'; }
+
+  /* ---------- Shorts ---------- */
+  .tiers { display: grid; grid-template-columns: repeat(4, 1fr); gap: 3.5mm; margin-top: 7mm; }
+  .tier { padding: 6mm 5mm 5mm; position: relative; display: flex; flex-direction: column; }
+  .tier .q { font-family: 'Sora'; font-size: 7pt; letter-spacing: .2em; text-transform: uppercase; color: var(--muted); }
+  .tier .q b { display: block; font-size: 30pt; letter-spacing: -.02em; color: #fff; line-height: 1; margin-bottom: 1mm; }
+  .tier .v { font-family: 'Sora'; font-size: 21pt; font-weight: 700; margin-top: 6mm; line-height: 1; }
+  .tier .v sup { font-size: 9pt; color: var(--muted); vertical-align: top; position: relative; top: 1.3mm; margin-right: .6mm; }
+  .tier .u { font-size: 7.4pt; color: var(--muted); margin-top: 1.8mm; }
+  .tier .meter { margin-top: 5mm; height: 16mm; display: flex; align-items: flex-end; border-bottom: 1px solid #1b2232; }
+  .tier .meter i { display: block; width: 100%; border-radius: 1.5mm 1.5mm 0 0; background: #24324d; }
+  .tier .meter-l { font-size: 6.4pt; color: var(--dim); letter-spacing: .12em; text-transform: uppercase; margin-top: 1.6mm; font-family: 'Sora'; }
+  .tier.hl { border-color: #ff5b1f; background: #1c120f; }
+  .tier.hl .v { color: var(--orange); }
+  .save { margin-top: auto; padding-top: 3mm; border-top: 1px solid #1b2232; font-size: 7.6pt; color: #c9d2df; }
+  .save b { color: var(--orange2); font-family: 'Sora'; }
+  .save.base { color: var(--dim); }
+  .tier .u { margin-bottom: 5mm; }
+  .tier.hl .save { border-color: #4a2416; }
+  .tier .badge { right: auto; left: 5mm; }
+  .more { margin-top: 4mm; display: flex; justify-content: space-between; align-items: center; padding: 5mm 6mm; }
+  .more h4 { font-family: 'Sora'; font-size: 11pt; font-weight: 600; }
+  .more p { font-size: 8pt; color: var(--muted); margin-top: .8mm; }
+  .more .v { font-family: 'Sora'; font-size: 20pt; font-weight: 700; color: var(--orange); white-space: nowrap; }
+  .more .v small { font-size: 8pt; color: var(--muted); font-weight: 500; margin-left: 1mm; }
+  .platforms { display: flex; gap: 2mm; margin-top: 6mm; flex-wrap: wrap; }
+
+  /* ---------- Experience ---------- */
+  .duo { display: grid; grid-template-columns: 1fr 1fr; gap: 5mm; margin-top: 7mm; align-items: start; }
+  .duo figure img { width: 100%; display: block; border-radius: 4mm; border: 1px solid var(--line); }
+  .duo figcaption { font-family: 'Sora'; font-size: 9.5pt; font-weight: 600; margin-top: 3mm; }
+  .duo figcaption small { display: block; font-family: 'Inter'; font-weight: 400; font-size: 7.8pt; color: var(--muted); margin-top: .6mm; }
+</style>
+</head>
+<body>
+
+<svg width="0" height="0" style="position:absolute">
+  <defs>
+    <symbol id="i-check" viewBox="0 0 24 24"><path d="M20 6 9 17l-5-5"/></symbol>
+    <symbol id="i-info" viewBox="0 0 24 24"><circle cx="12" cy="12" r="9"/><path d="M12 11v6M12 7.5v.01"/></symbol>
+    <symbol id="i-cams" viewBox="0 0 24 24"><rect x="1.5" y="7" width="10" height="8" rx="1.5"/><path d="m11.5 10 3-1.5v5l-3-1.5"/><rect x="13" y="12" width="6" height="5" rx="1" opacity=".0"/><path d="M16 4.5h5.5v5M4 19.5h8"/></symbol>
+    <symbol id="i-video" viewBox="0 0 24 24"><rect x="2" y="6" width="14" height="12" rx="2"/><path d="m16 10 6-3v10l-6-3"/></symbol>
+    <symbol id="i-light" viewBox="0 0 24 24"><path d="M9 18h6M10 21h4"/><path d="M12 3a6 6 0 0 0-3.5 10.9c.6.5 1 1.2 1 2.1h5c0-.9.4-1.6 1-2.1A6 6 0 0 0 12 3z"/></symbol>
+    <symbol id="i-mic" viewBox="0 0 24 24"><rect x="9" y="2.5" width="6" height="11" rx="3"/><path d="M5.5 11a6.5 6.5 0 0 0 13 0M12 17.5V21M8.5 21h7"/></symbol>
+    <symbol id="i-users" viewBox="0 0 24 24"><circle cx="9" cy="8" r="3.5"/><path d="M2.5 20c1-3.5 3.5-5.5 6.5-5.5s5.5 2 6.5 5.5"/><circle cx="17" cy="9" r="2.6"/><path d="M17.5 14.2c2.2.4 3.6 2.2 4.2 4.8"/></symbol>
+    <symbol id="i-edit" viewBox="0 0 24 24"><circle cx="6" cy="6" r="3"/><circle cx="6" cy="18" r="3"/><path d="M20 4 8.1 15.9M14.5 14.5 20 20M8.1 8.1 12 12"/></symbol>
+    <symbol id="i-phone" viewBox="0 0 24 24"><rect x="6" y="2" width="12" height="20" rx="2.5"/><path d="m10.5 9 4 3-4 3z"/></symbol>
+    <symbol id="i-home" viewBox="0 0 24 24"><path d="M3 11 12 4l9 7M5.5 9.5V20h13V9.5"/><path d="M10 20v-5h4v5"/></symbol>
+    <symbol id="i-set" viewBox="0 0 24 24"><rect x="3" y="4" width="18" height="12" rx="1.5"/><path d="M8 20h8M12 16v4"/><circle cx="12" cy="10" r="2.5"/></symbol>
+    <symbol id="i-user" viewBox="0 0 24 24"><circle cx="12" cy="8" r="4"/><path d="M4 21c1.5-4 4.5-6 8-6s6.5 2 8 6"/></symbol>
+    <symbol id="i-list" viewBox="0 0 24 24"><path d="M9 6h11M9 12h11M9 18h11M4 6h.01M4 12h.01M4 18h.01"/></symbol>
+    <symbol id="i-plus" viewBox="0 0 24 24"><rect x="3" y="3" width="18" height="18" rx="4"/><path d="M12 8v8M8 12h8"/></symbol>
+  </defs>
+</svg>
+
+<!-- =============== 01 · PORTADA =============== -->
+<section class="page cover">
+  <div class="pc-hero">
+    <img class="art" src="assets/bk-equipos.jpg" alt="">
+    <div class="tag">Propuesta comercial · 2026</div>
+    <div class="brand"><img src="assets/logo-glow.png" alt=""><div>FRAGUE<small>STUDIO</small></div></div>
+    <div class="word">P<span class="o">O</span>D<br>CAST</div>
+    <div class="wave" id="wave"></div>
+  </div>
+  <div class="body">
+    <div class="eyebrow">Producción de podcast</div>
+    <h1>Tu podcast, con calidad<br>de <span class="grad">estudio profesional</span></h1>
+    <p class="sub">Grabamos, iluminamos, microfoneamos y editamos tu capítulo completo, y lo convertimos en shorts listos para Instagram, TikTok y redes sociales.</p>
+
+    <div class="stats">
+      <div class="stat card"><div class="n">2</div><div class="l"><b>Cámaras</b>Capítulo completo grabado a doble cámara.</div></div>
+      <div class="stat card"><div class="n">3</div><div class="l"><b>Participantes</b>Audio profesional con micrófono para hasta 3 personas.</div></div>
+      <div class="stat card"><div class="n grad">4</div><div class="l"><b>Shorts incluidos</b>Reels verticales para Instagram, TikTok y redes.</div></div>
+    </div>
+  </div>
+  <div class="tagline"><span>UN CAPÍTULO. <span class="orange">CONTENIDO PARA TODA TU SEMANA.</span></span><span class="site">Propuesta 2026</span></div>
+</section>
+
+<!-- =============== 02 · PAQUETE =============== -->
+<section class="page">
+  <div class="band">
+    <img src="assets/bk-planes.jpg" alt="">
+    <div class="num">01</div>
+    <div class="inner">
+      <div class="eyebrow">El paquete</div>
+      <h2>Podcast completo</h2>
+      <p>Todo lo necesario para grabar y publicar tu capítulo, en un solo paquete.</p>
+    </div>
+  </div>
+  <div class="content" style="padding-top:7mm">
+    <div class="offer card">
+      <div>
+        <div class="eyebrow" style="margin-bottom:2.5mm">Paquete por capítulo</div>
+        <h3>Capítulo completo + 4 shorts</h3>
+        <p>Grabación a doble cámara, iluminación y audio profesional, edición del capítulo completo y 4 shorts tipo reel para tus redes.</p>
+      </div>
+      <div class="price"><div class="v"><sup>S/</sup>900</div><small>por capítulo · sin IGV</small></div>
+    </div>
+
+    <div class="feat-grid">
+      <div class="feat card"><div class="ico"><svg class="ic"><use href="#i-video"/></svg></div><h4>Grabación a doble cámara</h4><p>Dos ángulos durante todo el capítulo para una edición dinámica y profesional.</p></div>
+      <div class="feat card"><div class="ico"><svg class="ic"><use href="#i-light"/></svg></div><h4>Iluminación profesional</h4><p>Luces para que cada participante se vea nítido y con buena imagen.</p></div>
+      <div class="feat card"><div class="ico"><svg class="ic"><use href="#i-mic"/></svg></div><h4>Audio profesional</h4><p>Micrófonos colocados a cada participante para un sonido claro y limpio.</p></div>
+      <div class="feat card"><div class="ico"><svg class="ic"><use href="#i-users"/></svg></div><h4>Hasta 3 participantes</h4><p>Ideal para entrevistas, conversaciones o paneles de 2 o 3 personas.</p></div>
+      <div class="feat card"><div class="ico"><svg class="ic"><use href="#i-edit"/></svg></div><h4>Edición del capítulo</h4><p>Edición del capítulo completo, listo para publicar en tus plataformas.</p></div>
+      <div class="feat card"><div class="ico"><svg class="ic"><use href="#i-phone"/></svg></div><h4>4 shorts tipo reel</h4><p>Clips verticales para Instagram, TikTok y otras redes sociales.</p></div>
+    </div>
+
+    <div class="sub-h">¿Dónde grabamos?</div>
+    <div class="loc">
+      <div class="card"><svg class="ic" style="width:7mm;height:7mm"><use href="#i-home"/></svg><div><h4>En tu espacio</h4><p>Llevamos cámaras, luces y audio a tu oficina, consultorio, local o al lugar que elijas.</p></div></div>
+      <div class="or">O</div>
+      <div class="card"><svg class="ic" style="width:7mm;height:7mm"><use href="#i-set"/></svg><div><h4>En nuestro set</h4><p>Grabamos en un set armado en las instalaciones de FRAGUE STUDIO.</p></div></div>
+    </div>
+
+    <div class="value"><svg class="ic"><use href="#i-info"/></svg><span>Los <b>4 shorts incluidos</b> equivalen a <b>S/200</b> según nuestra tarifa de shorts y reels.</span></div>
+  </div>
+  <div class="foot"><div class="brand"><img src="assets/logo-white.png" alt="">Frague Studio · Podcast</div><div class="pg"><b>02</b> / 05</div></div>
+</section>
+
+<!-- =============== 03 · SHORTS =============== -->
+<section class="page">
+  <div class="band">
+    <img src="assets/bk-marcas.jpg" alt="">
+    <div class="num">02</div>
+    <div class="inner">
+      <div class="eyebrow">Servicio adicional</div>
+      <h2>Shorts y reels</h2>
+      <p>Videos verticales para Instagram, TikTok y redes sociales. Mientras más pides, menos pagas por cada uno.</p>
+    </div>
+  </div>
+  <div class="content" style="padding-top:2mm">
+    <div class="tiers">
+      <div class="tier card">
+        <div class="q"><b>1</b>short</div>
+        <div class="v"><sup>S/</sup>75</div><div class="u">S/75 por short</div>
+        <div class="save base">Tarifa base</div>
+      </div>
+      <div class="tier card">
+        <div class="q"><b>2</b>shorts</div>
+        <div class="v"><sup>S/</sup>125</div><div class="u">S/62,50 por short</div>
+        <div class="save">Ahorras <b>S/25</b></div>
+      </div>
+      <div class="tier card">
+        <div class="q"><b>3</b>shorts</div>
+        <div class="v"><sup>S/</sup>150</div><div class="u">S/50 por short</div>
+        <div class="save">Ahorras <b>S/75</b></div>
+      </div>
+      <div class="tier card hl">
+        <span class="badge">Mejor precio</span>
+        <div class="q"><b>4</b>shorts</div>
+        <div class="v"><sup>S/</sup>200</div><div class="u">S/50 por short</div>
+        <div class="save">Ahorras <b>S/100</b></div>
+      </div>
+    </div>
+
+    <p class="note" style="margin-top:3mm">Ahorro calculado frente a la tarifa individual de S/75 por short.</p>
+    <div class="more card">
+      <div><h4>¿Necesitas más de 4?</h4><p>A partir del tercer short, cada video adicional mantiene la tarifa preferencial.</p></div>
+      <div class="v">S/50<small>c/u</small></div>
+    </div>
+
+    <div class="platforms">
+      <span class="chip"><i></i>Instagram Reels</span>
+      <span class="chip"><i></i>TikTok</span>
+      <span class="chip"><i></i>Formato vertical para redes sociales</span>
+    </div>
+
+    <div class="eq" style="margin-top:8mm">
+      <h5>Ejemplo de inversión</h5>
+      <div class="eq-row">
+        <div class="eq-item"><small>Podcast completo<br>incluye 4 shorts</small><b>S/900</b></div>
+        <div class="eq-op">+</div>
+        <div class="eq-item"><small>4 shorts<br>adicionales</small><b>S/200</b></div>
+        <div class="eq-op">=</div>
+        <div class="eq-item total"><small>Capítulo + 8 shorts<br>en total (sin IGV)</small><b>S/1.100</b></div>
+      </div>
+      <div class="eq-foot">Un solo capítulo grabado se convierte en 8 piezas cortas para mantener tus redes activas.</div>
+    </div>
+    <div class="note"><svg class="ic" style="width:3.8mm;height:3.8mm"><use href="#i-info"/></svg>Los precios no incluyen IGV.</div>
+  </div>
+  <div class="foot"><div class="brand"><img src="assets/logo-white.png" alt="">Frague Studio · Podcast</div><div class="pg"><b>03</b> / 05</div></div>
+</section>
+
+<!-- =============== 04 · EXPERIENCIA Y EQUIPOS =============== -->
+<section class="page">
+  <div class="band">
+    <img src="assets/bk-pauta.jpg" alt="">
+    <div class="num">03</div>
+    <div class="inner">
+      <div class="eyebrow">Experiencia y equipo</div>
+      <h2>Respaldo profesional<br>en cada grabación</h2>
+      <p>Marcas que confían en nosotros y equipos elegidos según tu proyecto.</p>
+    </div>
+  </div>
+  <div class="content" style="padding-top:0">
+    <div class="duo">
+      <figure><img src="assets/marcas.jpg" alt=""><figcaption>Marcas que confían en nosotros<small>Empresas, instituciones y estudios profesionales.</small></figcaption></figure>
+      <figure><img src="assets/equipos.jpg" alt=""><figcaption>Equipos profesionales<small>Cámaras, estabilización, iluminación y audio.</small></figcaption></figure>
+    </div>
+
+    <div class="process" style="margin-top:9mm">
+      <h3 class="sora">Así producimos tu capítulo</h3>
+      <div class="steps">
+        <div class="step card"><div class="k"><span>01</span><em>Etapa</em></div><h4>Coordinación</h4><p>Definimos tema, participantes, fecha y locación: tu espacio o nuestro set.</p></div>
+        <div class="step card"><div class="k"><span>02</span><em>Etapa</em></div><h4>Grabación</h4><p>Doble cámara, iluminación y micrófonos profesionales para cada participante.</p></div>
+        <div class="step card"><div class="k"><span>03</span><em>Etapa</em></div><h4>Edición</h4><p>Editamos el capítulo completo y seleccionamos los mejores momentos para los shorts.</p></div>
+        <div class="step card"><div class="k"><span>04</span><em>Etapa</em></div><h4>Entrega</h4><p>Recibes el capítulo y los 4 shorts listos para publicar en tus redes.</p></div>
+      </div>
+    </div>
+  </div>
+  <div class="foot"><div class="brand"><img src="assets/logo-white.png" alt="">Frague Studio · Podcast</div><div class="pg"><b>04</b> / 05</div></div>
+</section>
+
+<!-- =============== 05 · CONDICIONES + CIERRE =============== -->
+<section class="page">
+  <div class="band">
+    <img src="assets/bk-condiciones.jpg" alt="">
+    <div class="num">04</div>
+    <div class="inner">
+      <div class="eyebrow">Acuerdos y coordinación</div>
+      <h2>Condiciones del servicio</h2>
+      <p>Acuerdos claros para una grabación organizada.</p>
+    </div>
+  </div>
+  <div class="content" style="padding-top:6mm">
+    <div class="grid2">
+      <div class="cond card">
+        <div class="top"><svg class="ic"><use href="#i-user"/></svg><span>01</span></div>
+        <h4>Coordinación del capítulo</h4>
+        <p>Antes de grabar se definen el tema, los participantes y la locación: tu espacio o nuestro set. El cliente designa un responsable para coordinar y aprobar contenido.</p>
+      </div>
+      <div class="cond card">
+        <div class="top"><svg class="ic"><use href="#i-list"/></svg><span>02</span></div>
+        <h4>Condiciones previas</h4>
+        <p>Duración del capítulo, fecha de grabación, traslados, plazos de entrega y forma de pago se establecen en la cotización específica.</p>
+      </div>
+      <div class="cond card">
+        <div class="top"><svg class="ic"><use href="#i-users"/></svg><span>03</span></div>
+        <h4>Participantes</h4>
+        <p>El paquete contempla hasta 3 personas en cámara, cada una con su micrófono profesional.</p>
+      </div>
+      <div class="cond card">
+        <div class="top"><svg class="ic"><use href="#i-plus"/></svg><span>04</span></div>
+        <h4>Adicionales y archivos originales</h4>
+        <p>Shorts, capítulos o formatos adicionales se cotizan por separado. Se entregan archivos finales; material original o editable debe acordarse expresamente.</p>
+      </div>
+      <div class="cond card feat">
+        <div class="big">2<small>Rondas</small></div>
+        <div class="txt"><h4>Rondas de correcciones incluidas</h4>
+        <p>Cada proyecto incluye dos rondas de correcciones sobre el capítulo y los shorts editados, para ajustar el resultado final antes de la entrega.</p></div>
+      </div>
+    </div>
+
+    <div class="cta">
+      <img class="logo" src="assets/logo-glow.png" alt="">
+      <div class="eyebrow">Hablemos de tu podcast</div>
+      <h2 style="margin-top:3mm">Tu voz merece verse <span class="grad">profesional.</span></h2>
+      <p>Cuéntanos de qué trata tu podcast, quiénes participan y dónde te gustaría grabar. Coordinamos contigo la fecha y la producción del capítulo.</p>
+      <div class="flow">
+        <div><b>01</b>Tema del capítulo</div>
+        <span class="arrow">→</span>
+        <div><b>02</b>Participantes</div>
+        <span class="arrow">→</span>
+        <div><b>03</b>Tu espacio o nuestro set</div>
+        <span class="arrow">→</span>
+        <div class="final"><b>FRAGUE</b>Capítulo + shorts</div>
+      </div>
+    </div>
+  </div>
+  <div class="foot"><div class="brand"><img src="assets/logo-white.png" alt="">Frague Studio · Producción de podcast</div><div class="pg"><b>05</b> / 05</div></div>
+</section>
+
+<script>
+  // Static decorative sound wave (deterministic heights)
+  const w = document.getElementById('wave');
+  const h = [18,34,52,30,64,82,46,70,96,58,40,76,100,62,36,54,88,48,28,44,72,38,22,50,30,16,26,12];
+  h.forEach((v, i) => { const b = document.createElement('i'); b.style.height = v + '%'; if (i % 4 === 1 || v > 80) b.className = 'on'; w.appendChild(b); });
+</script>
+</body>
+</html>
